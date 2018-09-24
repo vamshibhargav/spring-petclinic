@@ -204,7 +204,18 @@
       </plugin>
     </plugins>
   </build>
-
+  <distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>zettamine-releases</name>
+        <url>https://zettamine.jfrog.io/zettamine/MavenProject</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>zettamine-snapshots</name>
+        <url>https://zettamine.jfrog.io/zettamine/MavenProject</url>
+    </snapshotRepository>
+</distributionManagement>
   <!-- Apache 2 license -->
   <licenses>
     <license>
