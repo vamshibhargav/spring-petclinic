@@ -11,7 +11,9 @@ pipeline {
         checkout scm
       }
     }
-    parallel{
+  }
+  stages {
+  parallel{
       stage('Build') {
       agent { label "NewNode" }
         steps {
@@ -19,7 +21,7 @@ pipeline {
         sh 'echo $USER'
         sh 'echo whoami'
         }
-      }
+      },
       stage('forDemo') {
       agent { label "NewNode" }
       steps {
