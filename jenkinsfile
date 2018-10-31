@@ -1,18 +1,35 @@
+
+$JOB_NAME
+$NODE_NAME
+$WORKSPACE
+$BUILD_URL
+$JOB_URL
+
+
+Freestyle, any template, or even in Pipeline.
+
+
 pipeline {
   agent none
   tools { 
         maven 'Maven'
         jdk 'JAVA_HOME'
   }
+  environment {
+        MYJOB = 'DevOps'
+        BUILD = 'PIPELINE'
+    }
   stages {
     stage('Clone repository') {
     agent { label "NewNodes" }
+	environment {
+        MYJOB = 'DevOps1'
+        BUILD = 'PIPELINE1'
+    }
       steps {
         checkout scm
       }
     }
-  }
-  parallel{
       stage('Build') {
       agent { label "NewNode" }
         steps {
@@ -30,3 +47,4 @@ pipeline {
     }
    }
 }
+
