@@ -21,7 +21,7 @@ pipeline {
         sh 'echo $USER'
         sh 'echo whoami'
         }
-      },
+      }
       stage('forDemo') {
       agent { label "NewNode" }
       steps {
