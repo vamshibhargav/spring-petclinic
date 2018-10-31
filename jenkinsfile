@@ -5,13 +5,14 @@ pipeline {
         jdk 'JAVA_HOME'
   }
   stages {
-    agent { label "NewNode" }
     stage('Clone repository') {
+    agent { label "NewNode" }
       steps {
         checkout scm
       }
     }
     stage('Build') {
+    agent { label "NewNode" }
       steps {
         sh 'mvn clean package'
         sh 'echo $USER'
