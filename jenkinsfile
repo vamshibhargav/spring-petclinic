@@ -18,6 +18,7 @@ pipeline {
     }
       steps {
         checkout scm
+        sh 'echo MYJOB'
       }
     }
       stage('Build') {
@@ -26,6 +27,7 @@ pipeline {
         sh 'mvn clean package'
         sh 'echo $USER'
         sh 'echo whoami'
+        sh 'echo MYJOB'
         }
       }
       stage('forDemo') {
