@@ -12,7 +12,6 @@ pipeline {
       }
     }
   }
-  stages {
   parallel{
       stage('Build') {
       agent { label "NewNode" }
@@ -30,5 +29,4 @@ pipeline {
       }
     }
    }
- }
 }
