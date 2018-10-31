@@ -1,6 +1,6 @@
 
 pipeline {
-  agent none
+  agent any
   tools { 
         maven 'Maven'
         jdk 'JAVA_HOME'
@@ -11,30 +11,29 @@ pipeline {
     }
   stages {
     stage('Clone repository') {
-    agent { label "NewNodes" }
 	environment {
         MYJOB = 'DevOps1'
         BUILD = 'PIPELINE1'
     }
       steps {
         checkout scm
-        sh 'echo MYJOB'
+        sh 'echo $MYJOB'
       }
     }
       stage('Build') {
-      agent { label "NewNode" }
         steps {
         sh 'mvn clean package'
         sh 'echo $USER'
         sh 'echo whoami'
-        sh 'echo MYJOB'
+        sh 'echo $MYJOB'
         }
       }
       stage('forDemo') {
-      agent { label "NewNode" }
+      when {
+            branch 'master'
+        }
       steps {
-        sh 'echo Sudhakar'
-        sh 'sleep 100'
+        sh 'echo This is master'
       }
     }
    }
