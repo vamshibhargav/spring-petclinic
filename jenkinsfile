@@ -5,7 +5,7 @@ pipeline {
         jdk 'JAVA_HOME'
   }
   stages {
-    agent { label 'NewNode' }
+    agent { label "NewNode" }
     stage('Clone repository') {
       steps {
         checkout scm
