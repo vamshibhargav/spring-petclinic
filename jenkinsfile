@@ -6,7 +6,7 @@ pipeline {
   }
   stages {
     stage('Clone repository') {
-    agent { label "NewNode" }
+    agent { label "NewNodes" }
       steps {
         checkout scm
       }
