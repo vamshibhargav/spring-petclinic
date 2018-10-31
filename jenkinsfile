@@ -26,6 +26,11 @@ pipeline {
         sh 'echo $USER'
         sh 'echo whoami'
         sh 'echo $MYJOB'
+        } 
+        post {
+                always {
+                        junit "**/target/**/*.xml"
+                }
         }
       }
       stage('forDemo') {
