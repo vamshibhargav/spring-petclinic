@@ -11,13 +11,22 @@ pipeline {
         checkout scm
       }
     }
-    stage('Build') {
-    agent { label "NewNode" }
-      steps {
+    parallel{
+      stage('Build') {
+      agent { label "NewNode" }
+        steps {
         sh 'mvn clean package'
         sh 'echo $USER'
         sh 'echo whoami'
+        }
+      }
+      stage('forDemo') {
+      agent { label "NewNode" }
+      steps {
+        sh 'echo Sudhakar'
+        sh 'sleep 100'
       }
     }
+   }
  }
 }
