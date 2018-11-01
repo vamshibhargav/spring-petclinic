@@ -2,8 +2,8 @@
 pipeline {
   agent any
   tools { 
-        maven 'Maven_New'
-        jdk 'JDK'
+        maven 'Maven'
+        jdk 'JAVA_HOME'
   }
   environment {
         MYJOB = 'DevOps'
