@@ -20,27 +20,28 @@ pipeline {
         sh 'echo $MYJOB'
       }
     }
-      stage('Build') {
-        steps {
-        sh 'mvn clean package'
-        sh 'echo $USER'
-        sh 'echo whoami'
-        sh 'echo $MYJOB'
-        } 
-        post {
-                always {
-                        junit "**/target/surefire-reports/*.xml"
+    stage("Parllel Testing") {
+        parallel {
+                stage('Build') {
+                        steps {
+                             sh 'mvn clean package'
+                             sh 'echo $USER'
+                             sh 'echo whoami'
+                             sh 'echo $MYJOB'
+                        } 
+                        post {
+                                always {
+                                        junit "**/target/surefire-reports/*.xml"
+                                }
+                        }
+                }
+                stage('forDemo') {
+                      steps {
+                        sh 'echo This is master'
+                        sh 'sleep 100'
+                      }
                 }
         }
-      }
-      stage('forDemo') {
-      when {
-            branch 'master'
-        }
-      steps {
-        sh 'echo This is master'
-      }
-    }
+     }
    }
 }
-
