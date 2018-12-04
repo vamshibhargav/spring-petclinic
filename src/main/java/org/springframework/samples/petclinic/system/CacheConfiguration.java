@@ -17,7 +17,8 @@ class CacheConfiguration {
 
     @Bean
     public JCacheManagerCustomizer petclinicCacheConfigurationCustomizer() {
-        if( 1 )
+        boolean b1 = Boolean.parseBoolean("True");
+        if( b1 )
             return cm -> {
                 cm.createCache("vets", cacheConfiguration());
             };
