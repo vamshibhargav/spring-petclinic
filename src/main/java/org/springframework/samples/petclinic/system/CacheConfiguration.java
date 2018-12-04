@@ -17,9 +17,17 @@ class CacheConfiguration {
 
     @Bean
     public JCacheManagerCustomizer petclinicCacheConfigurationCustomizer() {
-        return cm -> {
-            cm.createCache("vets", cacheConfiguration());
-        };
+        if( 1 )
+            return cm -> {
+                cm.createCache("vets", cacheConfiguration());
+            };
+        }
+        else
+        {
+            return cm -> {
+                cm.createCache("vets", cacheConfiguration());
+            };
+        }
     }
 
     /**
