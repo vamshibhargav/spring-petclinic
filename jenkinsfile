@@ -4,17 +4,30 @@ pipeline {
   tools { 
         maven 'maven3.6'
   }
+  environment {
+        MYJOB = 'DevOps1'
+        BUILD = 'PIPELINE1'
+  }
   stages {
    stage('Clone repository') {
       steps {
         checkout scm
         echo "Sudhakar"
+        echo "$MYJOB"
+        echo "$BUILD"
       }
     }
     stage('Build'){
+      environment {
+        MYJOB = 'DevOps2'
+        BUILD = 'PIPELINE2'
+    }
       steps {
         sh 'mvn compile'
         echo "compilation done"
+        echo "$MYJOB"
+        echo "$BUILD"
+
       }
     }
   }
