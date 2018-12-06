@@ -26,7 +26,7 @@ pipeline {
         sh 'mvn compile'
         echo "compilation done"
         echo "$MYJOB"
-        echo "$BUILD"
+        echo "$WORKSPACE"
 
       }
     }
