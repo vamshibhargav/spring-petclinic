@@ -1,6 +1,10 @@
 
 pipeline {
   agent any
+  tools { 
+        maven 'maven3.6'
+        jdk 'JAVA_HOME'
+  }
   stages {
    stage('Clone repository') {
       steps {
