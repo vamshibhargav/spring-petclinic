@@ -23,11 +23,17 @@ pipeline {
         BUILD = 'PIPELINE2'
     }
       steps {
-        sh 'mvn compile'
+        sh 'mvn test'
+        junit "**/target/surefire-reports/*.xml"
         echo "compilation done"
         echo "$MYJOB"
         echo "$WORKSPACE"
 
+      }
+      post {
+        always {
+          junit "**/target/surefire-reports/*.xml"
+        }
       }
     }
   }
