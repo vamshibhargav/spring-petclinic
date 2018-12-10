@@ -20,7 +20,7 @@ pipeline {
         echo "Sudhakar"
         echo "$MYJOB"
         echo "$BUILD"
-        echo "param.PERSON"
+        echo "$PERSON"
       }
     }
     stage('Build'){
