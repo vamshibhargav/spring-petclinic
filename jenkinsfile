@@ -1,6 +1,11 @@
 
 pipeline {
   agent any
+  parameters {
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+  }
   tools { 
         maven 'Maven'
   }
@@ -23,7 +28,6 @@ pipeline {
         BUILD = 'PIPELINE2'
     }
       steps {
-        sh 'mvn sonar:sonar -Dsonar.host.url=http://sonarcloud.io -Dsonar.login=ae36ce047bda1abcce5c6d7e07e4b3c37e5e1ea7 -Dsonar.projectName=ztmbatch2 -Dsonar.projectKey=ztmbatch2 -Dsonar.sources=. -Dsonar.organization=ztmbatch2 -Dsonar.language=java -Dsonar.exclusions=PetclinicIntegrationTests.java -Dsonar.java.binaries=target/classes'
         sh 'mvn test'
         junit "**/target/surefire-reports/*.xml"
         echo "compilation done"
