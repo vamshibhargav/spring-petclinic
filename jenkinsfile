@@ -23,6 +23,7 @@ pipeline {
         BUILD = 'PIPELINE2'
     }
       steps {
+        sh 'mvn sonar:sonar -Dsonar.host.url=http://sonarcloud.io -Dsonar.login=ae36ce047bda1abcce5c6d7e07e4b3c37e5e1ea7 -Dsonar.projectName=ztmbatch2 -Dsonar.projectKey=ztmbatch2 -Dsonar.sources=. sonar.organization=ztmbatch2'
         sh 'mvn test'
         junit "**/target/surefire-reports/*.xml"
         echo "compilation done"
