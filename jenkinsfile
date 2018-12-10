@@ -6,7 +6,6 @@ pipeline {
   }
   tools { 
         maven 'Maven'
-        jdk 'JAVA_HOME'
   }
   environment {
         MYJOB = 'DevOps'
