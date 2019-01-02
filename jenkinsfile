@@ -20,5 +20,15 @@ pipeline {
           ansiblePlaybook become: true, credentialsId: 'SudhakarPrivateKey', disableHostKeyChecking: true, inventory: '/etc/ansible/hosts', playbook: '$WORKSPACE/createInstance.yaml'
       }
     }
+    
+    stage('InstallSoftwares and Deploy code')
+    {
+      steps {
+        
+           ansiblePlaybook become: true, colorized: true, credentialsId: 'SudhakarPrivateKey', disableHostKeyChecking: true, inventory: '/tmp/hosts', playbook: '$WORKSPACE/deployArtifact.yaml'
+
+          }
+    }
+    
   }
 }
