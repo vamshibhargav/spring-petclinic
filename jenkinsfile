@@ -17,7 +17,7 @@ pipeline {
     stage('createAnInstance')
     {
       steps {
-          sh 'this is tmp step'
+          ansiblePlaybook become: true, credentialsId: 'SudhakarPrivateKey', disableHostKeyChecking: true, inventory: '/etc/ansible/hosts', playbook: '$WORKSPACE/createInstance.yaml
       }
     }
   }
