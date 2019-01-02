@@ -14,4 +14,11 @@ pipeline {
          sh 'mvn clean package -DskipTests'
       } 
     }
+    stage('createAnInstance')
+    {
+      steps {
+          sh 'this is tmp step'
+      }
+    }
+  }
 }
