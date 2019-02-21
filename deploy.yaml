@@ -1,0 +1,21 @@
+---
+- hosts: all
+  become: true
+  gather_facts: yes
+  
+  tasks:
+  - name: install java1.8
+    apt: name=openjdk-8-jdk state=present
+    register: result
+  - debug:
+      msg: the res is {{result}}
+
+  - name: copy the content to the WWW
+    copy: src=/home/ec2-user/petclinic/spring-petclinic/target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar dest=/tmp/petclinic.jar
+    notify:
+    - start petclinic
+
+  handlers:
+  - name: start petclinic
+    shell: nohup java -jar /tmp/petclinic.jar &
+
