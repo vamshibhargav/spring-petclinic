@@ -30,7 +30,7 @@ pipeline {
    
    stage('installPackage'){
 	steps{
-	ansiblePlaybook become: true, credentialsId: 'ubuntu1', disableHostKeyChecking: true, installation: 'Ansible', inventory: '$WORKSPACE/dynamicHost.py', playbook: '$WORKSPACE/deploy.yaml'			 
+	ansiblePlaybook become: true, credentialsId: 'ubuntu1', disableHostKeyChecking: true,  forks: 4, installation: 'Ansible',extras: '-e WORKSPACE=$WORKSPACE' , inventory: '$WORKSPACE/dynamicHost.py', playbook: '$WORKSPACE/deploy.yaml'			 
 	}
    }
   }
