@@ -9,6 +9,8 @@
 
       - name: Launch the new EC2 Instance
         ec2:
+          aws_access_key: "{{ aws_access_key }}"
+          aws_secret_key: "{{ aws_secret_key }}"
           group: default        #security Grp
           instance_type: t2.micro   #instance class
           image: ami-0ac019f4fcb7cb7e6   # AMI
@@ -36,6 +38,8 @@
 
       - name: Ensure all instances are tagged
         ec2_tag:
+          aws_access_key: "{{ aws_access_key }}"
+          aws_secret_key: "{{ aws_secret_key }}"
           region:  us-east-1
           resource: '{{ item.id }}'   
           state: present
