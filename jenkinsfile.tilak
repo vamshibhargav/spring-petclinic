@@ -20,7 +20,7 @@ pipeline {
 	
 	stage('CreateInstance') {
       steps {
-	ansiblePlaybook inventory: '/home/ec2-user/hosts', playbook: '$WORKSPACE/getInstance.yaml'
+	ansiblePlaybook installation: 'Ansible', inventory: '/home/ec2-user/hosts', playbook: '$WORKSPACE/getInstance.yaml'
       }
    }
    
