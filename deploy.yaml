@@ -11,7 +11,7 @@
       msg: the res is {{result}}
 
   - name: copy the content to the WWW
-    copy: src=/home/ec2-user/petclinic/spring-petclinic/target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar dest=/tmp/petclinic.jar
+    copy: src="{{ WORKSPACE }}"/target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar dest=/tmp/petclinic.jar
     notify:
     - start petclinic
 
