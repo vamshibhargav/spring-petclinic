@@ -2,9 +2,9 @@ pipeline{
    agent any
    stages('first stage')
    {
-      agent any
       stage('stage1')
       {
+         agent any
         steps
         {
            sh 'echo sudhakar'
