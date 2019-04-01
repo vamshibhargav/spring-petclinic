@@ -43,7 +43,7 @@ pipeline{
           agent { label 'Agent1' }
          steps
          {
-            sh "${tool 'Sonar'}/bin/sonar-scanner -Dsonar.host.url=http://sonarcloud.io -Dsonar.java.binaries=target/classes/ -Dsonar.login=82ae3896ef5c524cef63cd82906018ee31852f42 -Dsonar.projectName=ratna -Dsonar.projectVersion=3 -Dsonar.projectKey=march30th -Dsonar.sources=. -Dsonar.organization=march30th"
+            sh "${tool 'Sonar'}/bin/sonar-scanner -Dsonar.host.url=http://sonarcloud.io -Dsonar.java.binaries=target/classes/ -Dsonar.login=82ae3896ef5c524cef63cd82906018ee31852f42 -Dsonar.projectName=ratna -Dsonar.projectVersion=${parameter1} -Dsonar.projectKey=march30th -Dsonar.sources=. -Dsonar.organization=march30th"
          }
       }
       
