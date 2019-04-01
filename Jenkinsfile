@@ -32,7 +32,7 @@ pipeline{
       }
       stage ('unit test')
       {
-          agent { label 'Agent2' }
+          agent { label 'Agent1' }
          steps
          {
             junit '**/target/**/*.xml'
