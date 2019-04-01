@@ -4,6 +4,10 @@ pipeline{
         maven 'Maven'
         'hudson.plugins.sonar.SonarRunnerInstallation' 'Sonar'
    }
+   parameters {
+    string(name: 'parameter1', description: 'dummykey')
+    string(name: 'parameter2', description: 'dummykey')
+  }
    //tool name: 'Sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
    stages('Developer')
    {
@@ -12,6 +16,8 @@ pipeline{
          agent { label 'Agent1' }
          steps
          {
+            
+            sh "echo ${parameter1}"
             checkout scm
          }
       }
