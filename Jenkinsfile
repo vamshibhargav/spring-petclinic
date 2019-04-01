@@ -1,15 +1,31 @@
 pipeline{
    agent any
-   stages('first stage')
+    def mvnHome= tool 'Maven'
+   stages('Checkout')
    {
-      stage('stage1')
+      stage('chekoutstage')
       {
-         agent any
-        steps
-        {
-           sh 'echo sudhakar'
-           sh 'echo  my class'
-        }
+         steps
+         {
+            checkout scm
+         }
+      }
+   }
+   stages('Build)
+   {
+      stage('Build')
+      {
+         steps
+         {
+            sh "${mvnHome}/bin/mvn clean test"
+         }
+      }
+      stage ('unit test')
+      {
+         steps
+         {
+            junit '**/target/**/*.xml'
+         }
       }
    }
 }
