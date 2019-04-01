@@ -11,7 +11,7 @@ pipeline{
          }
       }
    }
-   stages('Build)
+   stages('Build')
    {
       stage('Build')
       {
