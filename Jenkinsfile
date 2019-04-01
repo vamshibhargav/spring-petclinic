@@ -1,6 +1,8 @@
 pipeline{
    agent any
-    def mvnHome= tool 'Maven'
+   tools { 
+        maven 'Maven'
+   }
    stages('Checkout')
    {
       stage('chekoutstage')
@@ -11,13 +13,11 @@ pipeline{
          }
       }
    }
-   stages('Build')
-   {
-      stage('Build')
+   stage('Build')
       {
          steps
          {
-            sh "${mvnHome}/bin/mvn clean test"
+            sh "mvn clean test"
          }
       }
       stage ('unit test')
@@ -27,5 +27,4 @@ pipeline{
             junit '**/target/**/*.xml'
          }
       }
-   }
 }
