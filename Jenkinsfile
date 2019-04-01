@@ -2,8 +2,9 @@ pipeline{
    agent any
    tools { 
         maven 'Maven'
+        'hudson.plugins.sonar.SonarRunnerInstallation' 'Sonar'
    }
-   tool name: 'Sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+#   tool name: 'Sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
    stages('Developer')
    {
       stage('chekoutstage')
