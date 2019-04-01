@@ -3,7 +3,7 @@ pipeline{
    tools { 
         maven 'Maven'
    }
-   stages('Checkout')
+   stages('Developer')
    {
       stage('chekoutstage')
       {
@@ -12,7 +12,7 @@ pipeline{
             checkout scm
          }
       }
-   }
+  
    stage('Build')
       {
          steps
@@ -27,4 +27,5 @@ pipeline{
             junit '**/target/**/*.xml'
          }
       }
+   }
 }
