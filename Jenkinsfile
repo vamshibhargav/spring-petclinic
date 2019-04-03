@@ -27,7 +27,7 @@ pipeline{
           agent { label 'Agent1' }
          steps
          {
-            sh "mvn clean test"
+            sh "mvn clean package"
          }
       }
       stage ('unit test')
