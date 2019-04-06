@@ -1,5 +1,5 @@
 pipeline{
-   agent any
+   agent {label 'Agent1'}
    tools { 
         maven 'Maven'
         'hudson.plugins.sonar.SonarRunnerInstallation' 'Sonar'
