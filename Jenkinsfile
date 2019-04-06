@@ -54,6 +54,6 @@ pipeline{
           sh '/usr/bin/docker push 173368197931.dkr.ecr.us-east-2.amazonaws.com/petclinc:latest'
         }
       }
-      
+    }
    }
 }
