@@ -43,5 +43,17 @@ pipeline{
          }
       }
       
+      stage('Docker Build') {
+      steps {
+        sh '/usr/bin/docker build -t 173368197931.dkr.ecr.us-east-2.amazonaws.com/petclinc:latest .'
+      }
+    }
+    stage('Push image') {
+      steps {
+        withDockerRegistry([credentialsId: '2d888c37-682f-4fc5-a73f-5e93c1356fd4', url: "https://173368197931.dkr.ecr.us-east-2.amazonaws.com/petclinc/"]) {
+          sh '/usr/bin/docker push 173368197931.dkr.ecr.us-east-2.amazonaws.com/petclinc:latest'
+        }
+      }
+      
    }
 }
