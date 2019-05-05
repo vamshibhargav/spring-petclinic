@@ -33,6 +33,7 @@ pipeline{
     }
    stage ('example2')
    {
+    agent {label 'JnlpTestNode'}
    steps
    {
     sh "echo ${parameter2}"
