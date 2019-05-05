@@ -21,30 +21,31 @@ pipeline{
       checkout scm
    }
    }
-  stage{
-  parallel
+  stage ('parallelStage')
   {
-   stage ('build')
+    parallel
     {
-     steps
-     {
-      sh "mvn clean ${compilation}"
-      sh 'sleep 60'
-     }
+       stage ('build')
+       {
+         steps
+         {
+           sh "mvn clean ${compilation}"
+           sh 'sleep 60'
+        }
+      }
+      stage ('example2')
+      {
+         agent {label 'JnlpTestNode'}
+         steps
+         {
+             sh "echo ${parameter2}"
+             sh "echo ${MYENVIRONMENT}"
+             sh "echo ${WORKSPACE}"
+             sh 'echo sudhakar'
+             sh 'sleep 180'
+        }
+      }
     }
-   stage ('example2')
-   {
-    agent {label 'JnlpTestNode'}
-   steps
-   {
-    sh "echo ${parameter2}"
-    sh "echo ${MYENVIRONMENT}"
-    sh "echo ${WORKSPACE}"
-    sh 'echo sudhakar'
-    sh 'sleep 180'
-   }
-   }
-  }
   }
  }
  post
