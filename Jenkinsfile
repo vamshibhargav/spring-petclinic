@@ -34,6 +34,7 @@ pipeline{
    {
     sh "echo ${parameter2}"
     sh "echo ${MYENVIRONMENT}"
+    sh "echo ${WORKSPACE}"
     sh 'echo sudhakar'
    }
    }
