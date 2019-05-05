@@ -8,6 +8,10 @@ pipeline{
     string(name: 'compilation', description: 'dummykey')
     string(name: 'parameter2', description: 'dummykey')
   }
+ environment
+ {
+   MYENVIRONMENT="Sudhakar"
+ }
  stages ('BuildStage')
  {
    stage ('Checkout')
@@ -29,6 +33,7 @@ pipeline{
    steps
    {
     sh "echo ${parameter2}"
+    sh "echo ${MYENVIRONMENT}"
     sh 'echo sudhakar'
    }
    }
