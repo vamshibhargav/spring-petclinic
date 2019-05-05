@@ -28,7 +28,7 @@ pipeline{
    {
    steps
    {
-    sh "echo ${paramenter2}"
+    sh "echo ${parameter2}"
     sh 'echo sudhakar'
    }
    }
