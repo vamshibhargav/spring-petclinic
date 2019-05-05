@@ -12,6 +12,7 @@ pipeline{
    {
       checkout scm
    }
+   }
    stage ('build')
     {
      steps
@@ -19,7 +20,6 @@ pipeline{
         sh "mvn clean package"
      }
     }
-   }
    stage ('example2')
    {
     agent {label 'JnlpTestNode'}
