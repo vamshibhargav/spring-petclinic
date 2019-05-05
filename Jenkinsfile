@@ -1,13 +1,24 @@
 pipeline{
  agent any
- stages ('Example1')
+ tools { 
+        maven 'Maven'
+        'hudson.plugins.sonar.SonarRunnerInstallation' 'Sonar'
+   }
+ stages ('BuildStage')
  {
-   stage ('example')
+   stage ('Checkout')
    {
    steps
    {
-      sh 'echo sudhakar1'
+      checkout scm
    }
+   stage ('build')
+    {
+     steps
+     {
+        sh "mvn clean package"
+     }
+    }
    }
    stage ('example2')
    {
