@@ -26,7 +26,6 @@ pipeline{
     }
    stage ('example2')
    {
-    agent any
    steps
    {
     sh "echo ${paramenter2}"
