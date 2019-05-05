@@ -21,6 +21,7 @@ pipeline{
       checkout scm
    }
    }
+  stage{
   parallel
   {
    stage ('build')
@@ -43,6 +44,7 @@ pipeline{
     sh 'sleep 180'
    }
    }
+  }
   }
  }
  post
