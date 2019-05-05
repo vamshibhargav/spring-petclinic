@@ -11,6 +11,7 @@ pipeline{
    }
    stage ('example2')
    {
+    agent {label 'JnlpTestNode'}
    steps
    {
       sh 'echo sudhakar2'
