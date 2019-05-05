@@ -21,11 +21,14 @@ pipeline{
       checkout scm
    }
    }
+  parallel
+  {
    stage ('build')
     {
      steps
      {
       sh "mvn clean ${compilation}"
+      sh 'sleep 60'
      }
     }
    stage ('example2')
@@ -36,8 +39,10 @@ pipeline{
     sh "echo ${MYENVIRONMENT}"
     sh "echo ${WORKSPACE}"
     sh 'echo sudhakar'
+    sh 'sleep 180'
    }
    }
+  }
  }
  post
  {
