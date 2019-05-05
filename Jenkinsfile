@@ -26,7 +26,7 @@ pipeline{
     }
    stage ('example2')
    {
-    agent {label 'JnlpTestNode'}
+    agent any
    steps
    {
     sh "echo ${paramenter2}"
