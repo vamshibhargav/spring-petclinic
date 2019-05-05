@@ -4,6 +4,10 @@ pipeline{
         maven 'Maven'
         'hudson.plugins.sonar.SonarRunnerInstallation' 'Sonar'
    }
+  parameters {
+    string(name: 'compilation', description: 'dummykey')
+    string(name: 'parameter2', description: 'dummykey')
+  }
  stages ('BuildStage')
  {
    stage ('Checkout')
@@ -17,7 +21,7 @@ pipeline{
     {
      steps
      {
-        sh "mvn clean package"
+      sh "mvn clean ${compilation}"
      }
     }
    stage ('example2')
@@ -25,7 +29,8 @@ pipeline{
     agent {label 'JnlpTestNode'}
    steps
    {
-      sh 'echo sudhakar2'
+    sh "echo ${paramenter2}"
+    sh 'echo sudhakar'
    }
    }
  }
