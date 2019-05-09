@@ -12,7 +12,7 @@
 
    - name: copy Artifact
      copy:
-       src: "{{ WORKSPACE }}/target/*.jar"
+       src: "{{ WORKSPACE }}/target/spring-petclinic-2.0.0.BUILD-SNAPSHOT.jar"
        dest: /tmp/petclinic.jar
 
    - name: start the petclinic
