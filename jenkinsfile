@@ -17,7 +17,7 @@ pipeline {
     stage('createAnInstance')
     {
       steps {
-          ansiblePlaybook become: true, playbook: '$WORKSPACE/createInstance.yaml'
+          ansiblePlaybook playbook: '$WORKSPACE/createInstance.yaml'
           sh 'sleep 100'
       }
     }
