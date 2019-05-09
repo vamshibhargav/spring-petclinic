@@ -11,7 +11,7 @@
         ec2:
           group: default
           instance_type: t2.micro
-          image: ami-0080e4c5bc078760e
+          image: ami-061392db613a6357b
           wait: true
           region: us-west-2
           keypair: new1
