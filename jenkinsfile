@@ -17,7 +17,7 @@ pipeline {
     stage('createAnInstance')
     {
       steps {
-          ansiblePlaybook become: true, credentialsId: 'SudhakarPrivateKey', disableHostKeyChecking: true, inventory: '/etc/ansible/hosts', playbook: '$WORKSPACE/createInstance.yaml'
+          ansiblePlaybook become: true, playbook: '$WORKSPACE/createInstance.yaml'
           sh 'sleep 100'
       }
     }
@@ -26,8 +26,7 @@ pipeline {
     {
       steps {
         
-          ansiblePlaybook become: true, colorized: true, credentialsId: 'SudhakarPrivateKey', disableHostKeyChecking: true, extras: '-e WORKSPACE=$WORKSPACE', inventory: '/tmp/hosts', playbook: '$WORKSPACE/deployArtifact.yaml'
-
+          ansiblePlaybook become: true, credentialsId: '20c1fe5a-cb81-4312-bd65-7dc09eb36577', disableHostKeyChecking: true, extras: '-e WORKSPACE=$WORKSPACE', inventory: '/tmp/hosts', playbook: '$WORKSPACE/deployArtifact.yaml'
           }
     }
     
