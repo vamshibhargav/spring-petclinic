@@ -21,7 +21,7 @@ pipeline {
     stage('createAnInstance')
     {
       steps {
-          ansiblePlaybook playbook: '$WORKSPACE/createInstance.yaml'
+          ansiblePlaybook extras: '-e aws_access_key=$aws_access_key aws_secret_key=$aws_secret_key' , playbook: '$WORKSPACE/createInstance.yaml'
           sh 'sleep 100'
       }
     }
@@ -30,7 +30,7 @@ pipeline {
     {
       steps {
         
-          ansiblePlaybook become: true, credentialsId: '20c1fe5a-cb81-4312-bd65-7dc09eb36577', disableHostKeyChecking: true, extras: "-e WORKSPACE=$WORKSPACE aws_access_key=$aws_access_key aws_secret_key=$aws_secret_key" , inventory: '/tmp/hosts', playbook: '$WORKSPACE/deployArtifact.yaml'
+          ansiblePlaybook become: true, credentialsId: '20c1fe5a-cb81-4312-bd65-7dc09eb36577', disableHostKeyChecking: true, extras: '-e WORKSPACE=$WORKSPACE' , inventory: '/tmp/hosts', playbook: '$WORKSPACE/deployArtifact.yaml'
           }
     }
     
